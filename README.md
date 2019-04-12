@@ -8,6 +8,7 @@ So, nothing to see here, move along. I guess the only thing you'd come here for 
 Have a good day.
 
 FAQ:
+
 Q: Is that a minecraft grass block?
 
 A: Yes

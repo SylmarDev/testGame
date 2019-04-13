@@ -1,9 +1,7 @@
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.Runnable;
@@ -17,6 +15,7 @@ public class Game extends JFrame implements Runnable {
     private Canvas canvas = new Canvas();
     private RenderHandler renderer;
     private BufferedImage testImage;
+    private Rectangle rectangle = new Rectangle(30, 90, 100, 100); // Delete this its debug
 
     public Game() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Makes program exit when closed
@@ -27,6 +26,7 @@ public class Game extends JFrame implements Runnable {
         canvas.createBufferStrategy(3); // Creates object for buffer strategy
         renderer = new RenderHandler(getWidth(), getHeight()); // init RenderHandler object
         testImage = loadImage("grasstile.png"); // test image to see if an image will load
+        rectangle.generateGraphics(10, 1245);
     }
 
     private BufferedImage loadImage(String path) {
@@ -44,7 +44,7 @@ public class Game extends JFrame implements Runnable {
 
 
     public void update() {
-        // ???
+        // I'll fill this in later
     }
 
 
@@ -53,8 +53,11 @@ public class Game extends JFrame implements Runnable {
         Graphics graphics = bufferStrategy.getDrawGraphics();
         super.paint(graphics);
 
+
         renderer.renderImage(testImage, 0, 0, 1, 1);
+        renderer.renderRectangle(rectangle, 1, 1);
         renderer.render(graphics);
+
 
         graphics.dispose();
         bufferStrategy.show();
